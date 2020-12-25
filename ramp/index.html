@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ramp</title>
+<meta charset="UTF-8">
+<style>
+body {text-align:center;background-color:#000000;color:#ffffff;padding:50px;}
+button {cursor:pointer;padding:20px;background-color:green;color:#ffffff;font-weight:bold;border-radius: 15px;}
+button.inactivo {background-color:red;}
+.esconder {display:none;}
+</style>
+<script>
+var s3ok = false;
+function s1(){
+var element = document.getElementById("s1");
+element.classList.add("esconder");
+var element = document.getElementById("s2");
+element.classList.remove("esconder");
+var seconds = 180;
+var countdown = setInterval(function() {
+seconds--;
+document.getElementById("segundos").textContent = format(seconds);
+if (seconds <= 0){
+var element = document.getElementById("b2");
+element.classList.remove("inactivo");
+clearInterval(countdown);
+var myobj = document.getElementById("contador");
+myobj.remove();
+s3ok = true;
+} 
+}, 1000);
+}
+function s2(){
+if (s3ok) {
+var element = document.getElementById("s2");
+element.classList.add("esconder");
+var element = document.getElementById("s3");
+element.classList.remove("esconder");
+}
+}
+
+function format(time) {   
+// Hours, minutes and seconds
+var hrs = ~~(time / 3600);
+var mins = ~~((time % 3600) / 60);
+var secs = ~~time % 60;
+
+// Output like "1:01" or "4:03:59" or "123:03:59"
+var ret = "";
+if (hrs > 0) {
+ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+}
+ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+ret += "" + secs;
+return ret;
+}
+</script>
+</head>
+<body>
+<div id="s1">
+<h1>Peço a tua atenção por 5 minutos.</h1>
+<br><br><br>(Esta partilha tem 3 passos.)<br><br>
+<button onClick="s1();">Começar (1/3)</button> 
+</div>
+
+<div id="s2" class="esconder">
+<h1>Ver o vídeo:</h1>
+<iframe src="https://player.vimeo.com/video/494458766" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<br><br><button onClick="s2();" id="b2" class="inactivo"><span id="contador"><span id="segundos"></span> para o</span> seguinte  (2/3)</button>
+<br><br>"Respiração, Alimentação, Movimento, Pensamento."
+</div>
+
+<div id="s3" class="esconder">
+<h1>
+Depois do vídeo anterior, imagina os teus netos e/ou netas a crescerem, 
+dando os primeiros passos, dizendo as primeiras palavras, a fazerem os primeiros amigos, 
+a apanharem o autocarro para irem para a escola, a decidirem o futuro e irem para a universidade, 
+a criarem amizades e partilharem momentos e aventuras, irem para o novo trabalho e convidarem-vos para visitar a nova casa, 
+eles a formarem uma família... 
+<br><br>Mas... <u>só tu</u> podes decidir se queres <i>apenas</i> imaginar isso, ou se queres viver algo assim.<br><br>
+<b><u>Confia em ti.</u></b>
+</h1>
+<button style="background:#1E90FF;">Fim (3/3)</button>
+</div>
+</body>
+</html>
