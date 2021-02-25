@@ -8,6 +8,13 @@ body {text-align:center;background-color:#000000;color:#ffffff;}
 button {cursor:pointer;padding:20px;background-color:green;color:#ffffff;font-weight:bold;border-radius: 15px;}
 button.inactivo {background-color:red;}
 .esconder {display:none;}
+.trustinyourself {
+    background-color: #FFFFFF;
+    color:#000000;
+    -webkit-transition: background-color 5000ms linear;
+    -ms-transition: background-color 5000ms linear;
+    transition: background-color 5000ms linear;
+}
 </style>
 <script>
 var s3ok = false;
@@ -36,6 +43,8 @@ var element = document.getElementById("s2");
 element.classList.add("esconder");
 var element = document.getElementById("s3");
 element.classList.remove("esconder");
+var body = document.body;
+body.classList.add("trustinyourself");
 }
 }
 
@@ -59,8 +68,8 @@ return ret;
 <body>
 <div id="s1">
 <h1>Peço a tua atenção por 5 minutos.</h1>
-<br><br><br>(Esta partilha tem 3 passos.)<br><br>
-<button onClick="s1();">Começar (1/3)</button> 
+<br><br>Esta partilha tem 3 passos!<br><br>
+<br><button onClick="s1();">Começar (1/3)</button> 
 </div>
 
 <div id="s2" class="esconder">
